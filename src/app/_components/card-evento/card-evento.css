@@ -1,0 +1,45 @@
+.card-evento{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #3B5AC2;
+    border-radius: 25px;
+    width: 224px;
+    height: 280px;
+    padding: 0 auto;
+    margin: 0 auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-text{
+    width: 100%; /* Ocupa a largura total para o 'left' funcionar */
+    padding-left: 20px; /* Margem interna para não encostar na borda do card */
+    text-align: left;
+    margin-bottom: 10px;
+    color: #4A5568;
+}
+
+.card-text h3{
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.card-text p{
+    opacity: 0.9;
+}
+
+.card-evento button{
+    width: 192px;
+    height: 37px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #3B5AC2 0%, #1C3360 90%);
+    border: none;
+    color: white ;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
