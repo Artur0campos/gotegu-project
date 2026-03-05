@@ -2,3 +2,8 @@
 *{
     font-family: 'Quicksand';
 }
+
+button:hover{
+    opacity: 0.8;
+     transform: translateY(2px);
+}
