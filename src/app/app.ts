@@ -4,10 +4,11 @@ import { Header } from "./_components/header/header";
 import { CardEvento } from "./_components/card-evento/card-evento";
 import { ContainerMain } from "./_components/container-main/container-main";
 import { AvatarBtn } from "./_components/avatar-btn/avatar-btn";
+import { CardPromo } from './_components/card-promo/card-promo';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, CardEvento, ContainerMain, AvatarBtn],
+  imports: [RouterOutlet, Header, CardEvento, ContainerMain, AvatarBtn, CardPromo],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
