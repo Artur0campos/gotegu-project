@@ -29,17 +29,4 @@
     opacity: 0.9;
 }
 
-.card-evento button{
-    width: 192px;
-    height: 37px;
-    border-radius: 25px;
-    background: linear-gradient(90deg, #3B5AC2 0%, #1C3360 90%);
-    border: none;
-    color: white ;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
 
