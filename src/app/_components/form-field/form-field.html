@@ -1,13 +1,14 @@
 <div id="card">
     <div id="title">
-        <h2>{{ text }}</h2>
+        <h2>{{ text_title }}</h2>
     </div>
     <div id="content">
-        <app-input-component text="UID" placeholder="ex: 001"></app-input-component>
-        <app-input-component></app-input-component>
-        <app-input-component></app-input-component>
-        <app-input-component></app-input-component>
-        <app-input-component></app-input-component>
+        <ng-content></ng-content>
     </div>
-    <app-primary-btn></app-primary-btn>
+    <div class="btn-div">
+        <app-primary-btn></app-primary-btn>
+        <app-primary-btn text="deletar" variant="secondary" *ngIf="showDeleteButton"
+            icon="ph ph-download-simple"></app-primary-btn>
+    </div>
+
 </div>
