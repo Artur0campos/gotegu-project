@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home-page/home-page';
 import { EventRegistration } from './pages/event-registration/event-registration';
+import { EditBase } from './pages/edit-base/edit-base';
 
 export const routes: Routes = [
 
@@ -17,5 +18,12 @@ export const routes: Routes = [
 {
     path:'registration',
     component: EventRegistration
+},
+
+{
+    
+    path: 'edit',
+    component: EditBase
+
 }
 ];
