@@ -10,7 +10,7 @@ import { FormField_ } from './_components/form-field/form-field';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, CardEvento, ContainerMain, AvatarBtn, CardPromo, PrimaryBtn, FormField_],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
