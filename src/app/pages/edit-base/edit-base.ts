@@ -6,13 +6,13 @@ import { Header } from '../../_components/header/header';
 import { ContainerMain } from '../../_components/container-main/container-main';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-event-registration',
-  imports: [RouterOutlet, Header, ContainerMain, AvatarBtn, PrimaryBtn, FormField_, InputComponent],
-  templateUrl: './event-registration.html',
-  styleUrl: './event-registration.css',
+  selector: 'app-edit-base',
+  imports: [RouterOutlet, Header, ContainerMain, AvatarBtn, PrimaryBtn, FormField_,InputComponent, NgClass],
+  templateUrl: './edit-base.html',
+  styleUrl: './edit-base.css',
 })
-export class EventRegistration {
-
+export class EditBase {
 }
