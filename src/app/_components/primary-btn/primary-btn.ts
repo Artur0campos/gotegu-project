@@ -11,5 +11,5 @@ import { NgClass } from '@angular/common';
 export class PrimaryBtn {
   @Input() text: string = 'participar';
   @Input() variant: 'primary' | 'secondary' = 'primary';
-  @Input() icon: "ph ph-plus" | 'ph ph-download-simple' = "ph ph-plus";
+  @Input() icon: string="ph ph-plus"
 }

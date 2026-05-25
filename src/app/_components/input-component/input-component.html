@@ -1,4 +1,4 @@
 <div class="input-group">
     <label for="">{{text}}</label>
-    <input type="text" placeholder={{placeholder}}>
+    <input type="text" [placeholder]="placeholder" [value]="value" (input)="onInput($event)">
 </div>

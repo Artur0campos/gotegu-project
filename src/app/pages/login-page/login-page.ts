@@ -2,13 +2,60 @@ import { Component } from '@angular/core';
 import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { User } from '../../models/user';
+import { Login } from '../../services/login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
-  imports: [AvatarBtn, InputComponent, PrimaryBtn],
+  imports: [AvatarBtn, InputComponent, PrimaryBtn,
+    ReactiveFormsModule],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
 export class LoginPage {
+
+  userForm: FormGroup;
+  msg: string = " "
+  msgClass: string = " "
+
+  constructor(private fb: FormBuilder, private loginService: Login, private route: Router) {
+
+    this.userForm = this.fb.group({
+      cpf: [''],
+      nome: [''],
+      email: [''],
+      senha: ['']
+    });
+
+  }
+
+  cadastro_user() {
+    const user: User = this.userForm.value
+    console.log(user)
+    this.loginService.registration_user(user).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.msg = "Usuário cadastrado com sucesso!"
+        this.msgClass = 'success-message'
+      }, error: (err) => {
+        console.log(err)
+        this.msg =
+          'Erro ao cadastrar usuário';
+
+        this.msgClass = 'error-message';
+
+      }
+
+
+    })
+
+
+
+  }
+
+
+
 
 }

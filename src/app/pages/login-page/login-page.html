@@ -13,7 +13,7 @@
 
         <div id="main-right">
 
-            <div id="card-inscricao">
+            <form [formGroup]="userForm" (ngSubmit)="cadastro_user()" id="card-inscricao">
 
                 <div id="top-card">
                     <app-avatar-btn></app-avatar-btn>
@@ -22,25 +22,30 @@
 
                 <div class="inputs-container">
 
-                    <app-input-component text="CPF" placeholder="000.000.000-00">
+                    <app-input-component text="CPF" placeholder="000.000.000-00" formControlName="cpf">
                     </app-input-component>
 
-                    <app-input-component text="Nome" placeholder="Sabrina Carpinter">
+                    <app-input-component text="Nome" placeholder="Sabrina Carpinter" formControlName="nome">
                     </app-input-component>
 
-                    <app-input-component text="Email" placeholder="suamae@gmail.com">
+                    <app-input-component text="Email" placeholder="suamae@gmail.com" formControlName="email">
                     </app-input-component>
 
-                    <app-input-component text="Senha" placeholder="••••••••">
+                    <app-input-component text="Senha" placeholder="••••••••" formControlName="senha">
                     </app-input-component>
 
                 </div>
 
                 <div class="btn-container">
-                    <app-primary-btn></app-primary-btn>
+                    <app-primary-btn type="submit" icon="ph ph-arrow-circle-up" text="Cadastrar"></app-primary-btn>
                 </div>
+                <p [class]="msgClass">
+                    {{ msg }}
+                </p>
 
-            </div>
+
+
+            </form>
 
         </div>
 
