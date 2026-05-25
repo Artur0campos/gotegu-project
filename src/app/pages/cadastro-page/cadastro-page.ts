@@ -3,18 +3,18 @@ import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UserLogin} from '../../models/user';
+import { User } from '../../models/user';
 import { Login } from '../../services/login';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-cadastro-page',
   imports: [AvatarBtn, InputComponent, PrimaryBtn,
     ReactiveFormsModule],
-  templateUrl: './login-page.html',
-  styleUrl: './login-page.css',
+  templateUrl: './cadastro-page.html',
+  styleUrl: './cadastro-page.css',
 })
-export class LoginPage {
+export class CadastroPage {
 
   userForm: FormGroup;
   msg: string = ""
@@ -24,22 +24,25 @@ export class LoginPage {
 
     this.userForm = this.fb.group({
       cpf: [''],
+      nome: [''],
+      email: [''],
       senha: ['']
     });
 
   }
 
   cadastro_user() {
-    const user: UserLogin = this.userForm.value
+    const user: User = this.userForm.value
     console.log(user)
-    this.loginService.authentication(user).subscribe({
+    this.loginService.registration_user(user).subscribe({
       next: (response) => {
         console.log(response)
-        this.route.navigateByUrl('/homePage')
+        this.msg = "Usuário cadastrado com sucesso!"
+        this.msgClass = 'success-message'
       }, error: (err) => {
         console.log(err)
         this.msg =
-          'Erro ao logar usuário';
+          'Erro ao cadastrar usuário';
 
         this.msgClass = 'error-message';
 

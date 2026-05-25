@@ -17,12 +17,18 @@
 
                 <div id="top-card">
                     <app-avatar-btn></app-avatar-btn>
-                    <h3>Login de Usuário</h3>
+                    <h3>Comece sua jornada</h3>
                 </div>
 
                 <div class="inputs-container">
 
                     <app-input-component text="CPF" placeholder="000.000.000-00" formControlName="cpf">
+                    </app-input-component>
+
+                    <app-input-component text="Nome" placeholder="Sabrina Carpinter" formControlName="nome">
+                    </app-input-component>
+
+                    <app-input-component text="Email" placeholder="suamae@gmail.com" formControlName="email">
                     </app-input-component>
 
                     <app-input-component text="Senha" placeholder="••••••••" formControlName="senha">
@@ -31,9 +37,9 @@
                 </div>
 
                 <div class="btn-container">
-                    <app-primary-btn type="submit" icon="ph ph-arrow-circle-up" text="Login"></app-primary-btn>
+                    <app-primary-btn type="submit" icon="ph ph-arrow-circle-up" text="Cadastrar"></app-primary-btn>
                 </div>
-                <a href="/registerUser">cire sua conta</a>
+                <a href="/login">login</a>
                 <p [class]="msgClass">
                     {{ msg }}
                 </p>

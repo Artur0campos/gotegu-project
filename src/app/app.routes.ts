@@ -3,6 +3,7 @@ import { HomePage } from './pages/home-page/home-page';
 import { EventRegistration } from './pages/event-registration/event-registration';
 import { EditBase } from './pages/edit-base/edit-base';
 import { LoginPage } from './pages/login-page/login-page';
+import { CadastroPage } from './pages/cadastro-page/cadastro-page';
 
 export const routes: Routes = [
 
@@ -17,7 +18,7 @@ export const routes: Routes = [
 },
 
 {
-    path:'registration',
+    path:'EveventRegistration',
     component: EventRegistration
 },
 
@@ -31,5 +32,10 @@ export const routes: Routes = [
 {
 path: 'login',
     component: LoginPage
+},
+
+{
+    path: 'registerUser',
+    component: CadastroPage
 }
 ];

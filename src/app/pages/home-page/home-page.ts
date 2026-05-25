@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterOutlet, Header, CardEvento, ContainerMain, AvatarBtn, CardPromo, PrimaryBtn, FormField_, CommonModule],
+  imports: [Header, CardEvento, ContainerMain, AvatarBtn, CardPromo, CommonModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
