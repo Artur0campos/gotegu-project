@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   imports: [AvatarBtn, InputComponent, PrimaryBtn,
-    ReactiveFormsModule],
+    ReactiveFormsModule,],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
