@@ -6,11 +6,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserLogin} from '../../models/user';
 import { Login } from '../../services/login';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
   imports: [AvatarBtn, InputComponent, PrimaryBtn,
-    ReactiveFormsModule,],
+    ReactiveFormsModule,CommonModule,],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -35,8 +36,11 @@ export class LoginPage {
     this.loginService.authentication(user).subscribe({
       next: (response) => {
         console.log(response)
+        sessionStorage.setItem('token_jwt', response.token_jwt)
+        console.log(sessionStorage.getItem('token_jwt'))
         this.route.navigateByUrl('/homePage')
-      }, error: (err) => {
+      }, 
+      error: (err) => {
         console.log(err)
         this.msg =
           'Erro ao logar usuário';

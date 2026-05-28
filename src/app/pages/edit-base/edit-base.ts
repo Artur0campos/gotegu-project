@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-edit-base',
-  imports: [RouterOutlet, Header, ContainerMain, AvatarBtn, PrimaryBtn, FormField_,InputComponent, NgClass],
+  imports: [ Header, ContainerMain, FormField_,InputComponent],
   templateUrl: './edit-base.html',
   styleUrl: './edit-base.css',
 })

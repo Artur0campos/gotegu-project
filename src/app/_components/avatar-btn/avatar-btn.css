@@ -1,7 +1,7 @@
 button{
-    height: 60px;
-    width: 60px;
-    color: #ED8936 ;
+    height: 45px;
+    width: 45px;
+    color:#ED8936 ;
     border-radius: 100px;
     border: none;
     background-color: #fff;
@@ -9,5 +9,5 @@ button{
 }
 
 i{
-    font-size: 46px;
+    font-size: 36px;
 }

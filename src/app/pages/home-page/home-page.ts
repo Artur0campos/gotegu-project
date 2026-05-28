@@ -1,20 +1,15 @@
-import { Component } from '@angular/core';
-import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Header } from '../../_components/header/header';
 import { CardEvento } from '../../_components/card-evento/card-evento';
 import { ContainerMain } from '../../_components/container-main/container-main';
 import { CardPromo } from '../../_components/card-promo/card-promo';
-import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
-import { FormField_ } from '../../_components/form-field/form-field';
 import { Eventos } from '../../models/eventos';
-import { Router } from 'express';
 import { eventosService } from '../../services/eventos';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [Header, CardEvento, ContainerMain, AvatarBtn, CardPromo, CommonModule],
+  imports: [Header, CardEvento, ContainerMain, CardPromo, CommonModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
@@ -28,7 +23,8 @@ export class HomePage {
 
   constructor(
 
-    private eventoService: eventosService
+    private eventoService: eventosService,
+    private cdr: ChangeDetectorRef
   ) { }
 
 
@@ -36,16 +32,21 @@ export class HomePage {
     this.atualizaCards()
   }
 
-  atualizaCards(){
+  atualizaCards() {
+    console.log(sessionStorage.getItem('token_jwt'))
     this.eventoService.getEventos().subscribe({
       next: (eventos_disponiveis) => {
-        this.eventos_disponiveis = eventos_disponiveis},
-        error: (erro) => {
-          console.log(erro)
-          this.mensagem = erro.error.message
-        }
+        console.log(eventos_disponiveis)
+        this.eventos_disponiveis = eventos_disponiveis
+        this.cdr.detectChanges()
+      },
+      error: (erro) => {
+        console.log(erro)
+        this.mensagem = erro.error.message
       }
-    )}
+    }
+    )
+  }
 
 
 
