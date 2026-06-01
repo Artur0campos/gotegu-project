@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { FormField_ } from '../../_components/form-field/form-field';
 import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
-import { RouterOutlet } from '@angular/router';
 import { Header } from '../../_components/header/header';
 import { ContainerMain } from '../../_components/container-main/container-main';
-import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
 
 @Component({
   selector: 'app-event-registration',
-  imports: [RouterOutlet, Header, ContainerMain, AvatarBtn, PrimaryBtn, FormField_, InputComponent],
+  imports: [ Header, ContainerMain, AvatarBtn, FormField_, InputComponent],
   templateUrl: './event-registration.html',
   styleUrl: './event-registration.css',
 })

@@ -33,6 +33,7 @@
     margin: 0;
     font-weight: bold;
     color: black;
+    cursor: pointer
 }
 
 .navegation{
@@ -56,5 +57,6 @@
 img{
     width: auto;
     height: 100px;
+    cursor: pointer
 }
 

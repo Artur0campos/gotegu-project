@@ -4,28 +4,32 @@ import { EventRegistration } from './pages/event-registration/event-registration
 import { EditBase } from './pages/edit-base/edit-base';
 import { LoginPage } from './pages/login-page/login-page';
 import { CadastroPage } from './pages/cadastro-page/cadastro-page';
+import { authGuard } from './_components/guard/auth-guard';
 
 export const routes: Routes = [
 
 {
     path:'homePage',
-    component: HomePage
+    component: HomePage,
+    
 },
 
 {
     path:'',
-    component: HomePage
+    component: LoginPage
 },
 
 {
-    path:'EveventRegistration',
-    component: EventRegistration
+    path:'eventRegistration',
+    component: EventRegistration,
+    
 },
 
 {
     
     path: 'edit',
-    component: EditBase
+    component: EditBase,
+    
 
 },
 

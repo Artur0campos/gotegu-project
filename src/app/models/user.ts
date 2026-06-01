@@ -1,3 +1,5 @@
+import * as CryptoJS from 'crypto-js'
+
 export class User {
 
     cpf: string;
@@ -33,4 +35,8 @@ export class UserLogin {
         this.cpf = cpf;
         this.senha = senha;
     }
+}
+
+export function gerarHash(senha: string){
+    return CryptoJS.SHA256(senha).toString();
 }

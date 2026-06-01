@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-field',
-  imports: [CommonModule,InputComponent, PrimaryBtn],
+  imports: [CommonModule, PrimaryBtn],
   templateUrl: './form-field.html',
   styleUrl: './form-field.css',
 })

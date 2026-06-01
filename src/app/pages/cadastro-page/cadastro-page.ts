@@ -3,13 +3,13 @@ import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { User } from '../../models/user';
+import { gerarHash, User } from '../../models/user';
 import { Login } from '../../services/login';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-page',
-  imports: [AvatarBtn, InputComponent, PrimaryBtn,
+  imports: [InputComponent, PrimaryBtn,
     ReactiveFormsModule],
   templateUrl: './cadastro-page.html',
   styleUrl: './cadastro-page.css',
@@ -33,6 +33,7 @@ export class CadastroPage {
 
   cadastro_user() {
     const user: User = this.userForm.value
+    user.senha = gerarHash(user.senha)
     console.log(user)
     this.loginService.registration_user(user).subscribe({
       next: (response) => {

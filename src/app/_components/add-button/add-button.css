@@ -1,7 +1,7 @@
 button{
     height: 45px;
     width: 45px;
-    color:#ED8936 ;
+    color:#3B5AC2;
     border-radius: 100px;
     border: none;
     background-color: #fff;
@@ -10,5 +10,5 @@ button{
 }
 
 i{
-    font-size: 36px;
+    font-size: 34px;
 }

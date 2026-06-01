@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Gotegu</title>
-</head>
-
-<body>
-    <app-header></app-header>
-    <app-card-promo></app-card-promo>
-    <app-container-main>
-        <app-card-evento *ngFor="let evento of eventos_disponiveis" [nome]="evento.nome" [descricao]="evento.descricao" [dt_inicio]="evento.dt_inicio"></app-card-evento>
-    </app-container-main>
-
-    <app-avatar-btn></app-avatar-btn>
-</body>
-
-</html>
+<app-header></app-header>
+<app-card-promo></app-card-promo>
+<app-container-main>
+    @if ( eventos_disponiveis.length == 0 ) {
+    <h3>Nenhum evento disponível</h3>
+    }@else {
+    <app-card-evento *ngFor="let evento of eventos_disponiveis" [nome]="evento.nome" [descricao]="evento.descricao"
+        [dt_inicio]="evento.dt_inicio"></app-card-evento>
+    }
+</app-container-main>=
