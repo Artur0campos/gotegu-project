@@ -7,17 +7,17 @@ import { User, UserLogin } from '../models/user';
   providedIn: 'root',
 })
 export class Login {
-  private eventosUrl = 'http://localhost:8080/api/v1/usuario';
+  private usarioUrl = 'http://localhost:8080/api/v1/usuario';
 
 
   constructor(private http:HttpClient){}
 
   registration_user(obj:User): Observable <User>{
-    return this.http.post<User>(`${this.eventosUrl}`, obj)
+    return this.http.post<User>(`${this.usarioUrl}`, obj)
   }
 
   authentication(obj:UserLogin): Observable <any> {
-    return this.http.post<UserLogin>(`${this.eventosUrl}/logar`, obj)
+    return this.http.post<UserLogin>(`${this.usarioUrl}/logar`, obj)
   }
   
 }
