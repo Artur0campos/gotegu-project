@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-page',
-  imports: [AvatarBtn, InputComponent, PrimaryBtn,
+  imports: [InputComponent, PrimaryBtn,
     ReactiveFormsModule],
   templateUrl: './cadastro-page.html',
   styleUrl: './cadastro-page.css',

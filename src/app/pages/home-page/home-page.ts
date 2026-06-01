@@ -29,6 +29,7 @@ export class HomePage {
 
 
   ngOnInit(): void {
+    console.log('HomePage carregada')
     this.atualizaCards()
   }
 

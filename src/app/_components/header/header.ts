@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AvatarBtn } from "../avatar-btn/avatar-btn";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,5 +11,13 @@ import { AvatarBtn } from "../avatar-btn/avatar-btn";
 })
 export class Header {
 
-   
+  constructor(private router: Router) { }
+
+  nav() {
+    this.router.navigateByUrl('/edit');
+  }
+
+  home(){
+    this.router.navigateByUrl('/homePage')
+  }
 }

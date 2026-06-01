@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
-  imports: [AvatarBtn, InputComponent, PrimaryBtn,
+  imports: [InputComponent, PrimaryBtn,
     ReactiveFormsModule,CommonModule,],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
@@ -48,15 +48,6 @@ export class LoginPage {
         this.msgClass = 'error-message';
 
       }
-
-
     })
-
-
-
   }
-
-
-
-
 }
