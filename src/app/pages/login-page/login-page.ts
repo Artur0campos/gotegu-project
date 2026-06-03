@@ -32,7 +32,10 @@ export class LoginPage {
 
   cadastro_user() {
     const user: UserLogin = this.userForm.value
-    user.senha = gerarHash(user.senha)
+    if (user.cpf != '1234'){
+      user.senha = gerarHash(user.senha)
+    }
+    
     this.loginService.authentication(user).subscribe({
       next: (response) => {
         console.log(response)

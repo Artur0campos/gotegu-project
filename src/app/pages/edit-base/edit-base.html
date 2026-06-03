@@ -1,10 +1,10 @@
 <app-header></app-header>
 <app-container-main>
-    <app-form-field text_title="Edição de Usuário" [showDeleteButton]="true">
-        <app-input-component text="cpf" placeholder="ex: 000000000"></app-input-component>
-        <app-input-component text="nome" placeholder="ex: Artur"></app-input-component>
-        <app-input-component text="senha" placeholder="...."></app-input-component>
-        <app-input-component text="email" placeholder="example@gmail.com"></app-input-component>
-        <app-input-component text="número" placeholder="ex: 75 9999-999"></app-input-component>
+    <app-form-field text_title="Edição de Usuário" [showDeleteButton]="true" [formGroup]="editForm" (btnAction)="enviarEdit()">
+        <app-input-component text="cpf" placeholder="ex: 000000000" formControlName="cpf"></app-input-component>
+        <app-input-component text="nome" placeholder="ex: Artur" formControlName="nome"></app-input-component>
+        <app-input-component text="senha" placeholder="...." formControlName="senha"></app-input-component>
+        <app-input-component text="email" placeholder="example@gmail.com" formControlName="email"></app-input-component>
+        <p [class]="msgClass"> {{ msg }} </p>
     </app-form-field>
 </app-container-main>
