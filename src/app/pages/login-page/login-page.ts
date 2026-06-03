@@ -3,7 +3,7 @@ import { AvatarBtn } from '../../_components/avatar-btn/avatar-btn';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UserLogin} from '../../models/user';
+import { gerarHash, UserLogin } from '../../models/user';
 import { Login } from '../../services/login';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login-page',
   imports: [InputComponent, PrimaryBtn,
-    ReactiveFormsModule,CommonModule,],
+    ReactiveFormsModule, CommonModule,],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -32,14 +32,40 @@ export class LoginPage {
 
   cadastro_user() {
     const user: UserLogin = this.userForm.value
-    console.log(user)
+    user.senha = gerarHash(user.senha)
     this.loginService.authentication(user).subscribe({
       next: (response) => {
         console.log(response)
         sessionStorage.setItem('token_jwt', response.token_jwt)
         console.log(sessionStorage.getItem('token_jwt'))
+
+        this.loginService.list_users().subscribe({
+          next: (usuarios) => {
+
+            const usuario = usuarios.find(
+              (user: UserLogin) => user.cpf === this.userForm.value.cpf
+            );
+
+            if (usuario) {
+              sessionStorage.setItem(
+                'id_usuario_participante',
+                usuario.id.toString()
+              );
+
+              console.log('ID salvo:', usuario.id);
+            } else {
+              console.log('Usuário não encontrado');
+            }
+
+          },
+          error: (err) => {
+            console.log(err);
+          }
+
+        })
+
         this.route.navigateByUrl('/homePage')
-      }, 
+      },
       error: (err) => {
         console.log(err)
         this.msg =

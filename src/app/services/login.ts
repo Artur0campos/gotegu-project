@@ -20,4 +20,9 @@ export class Login {
     return this.http.post<UserLogin>(`${this.usarioUrl}/logar`, obj)
   }
   
+  list_users(): Observable<any>{
+    const token = sessionStorage.getItem('token_jwt')
+    const headers = new HttpHeaders({ Authorization: `${token}`})
+    return this.http.get<any>(`${this.usarioUrl}`, { "headers": headers } )
+  }
 }

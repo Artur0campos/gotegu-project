@@ -23,5 +23,10 @@ export class eventosService {
     return this.http.get<Eventos[]>(`${this.eventosUrl}`, { "headers": headers })
   }
 
+  getEventosById(id: number): Observable<Eventos>{
+    const token = sessionStorage.getItem('token_jwt')
+    const headers = new HttpHeaders({ Authorization: `${token}`})
+    return this.http.get<Eventos>(`${this.eventosUrl}/${id}`, { "headers": headers })
+  }
   
 }

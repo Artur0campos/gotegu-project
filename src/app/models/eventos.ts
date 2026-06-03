@@ -1,5 +1,5 @@
 export class Eventos {
-
+    id: number;
     nome: string;
     dt_inicio: string;
     dt_fim: string;
@@ -13,6 +13,7 @@ export class Eventos {
     dt_limite_inscricao: string;
 
     constructor(
+        id: number,
         nome: string,
         dt_inicio: string,
         dt_fim: string,
@@ -25,7 +26,7 @@ export class Eventos {
         numero_vagas: number,
         dt_limite_inscricao: string
     ) {
-
+        this.id = id
         this.nome = nome;
         this.dt_inicio = dt_inicio;
         this.dt_fim = dt_fim;

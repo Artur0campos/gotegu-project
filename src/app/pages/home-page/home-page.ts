@@ -24,17 +24,16 @@ export class HomePage {
   constructor(
 
     private eventoService: eventosService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) { }
 
 
   ngOnInit(): void {
-    console.log('HomePage carregada')
     this.atualizaCards()
   }
 
+
   atualizaCards() {
-    console.log(sessionStorage.getItem('token_jwt'))
     this.eventoService.getEventos().subscribe({
       next: (eventos_disponiveis) => {
         console.log(eventos_disponiveis)
