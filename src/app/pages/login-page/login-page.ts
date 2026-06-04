@@ -32,10 +32,10 @@ export class LoginPage {
 
   cadastro_user() {
     const user: UserLogin = this.userForm.value
-    if (user.cpf != '1234'){
+    if (user.cpf != '1234') {
       user.senha = gerarHash(user.senha)
     }
-    
+
     this.loginService.authentication(user).subscribe({
       next: (response) => {
         console.log(response)
@@ -53,7 +53,8 @@ export class LoginPage {
               sessionStorage.setItem(
                 'id_usuario_participante',
                 usuario.id.toString()
-              );
+              )
+              sessionStorage.setItem('cpf_usuario_participante', usuario.cpf.toString())
 
               console.log('ID salvo:', usuario.id);
             } else {

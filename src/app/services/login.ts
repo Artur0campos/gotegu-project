@@ -27,6 +27,7 @@ export class Login {
   }
 
   update_User(id: number, obj:User): Observable<any>{
+    console.log("obj", obj)
     const token = sessionStorage.getItem('token_jwt')
     const headers = new HttpHeaders({ Authorization: `${token}`})
     return this.http.put<any>( `${this.usarioUrl}/${id}`,obj, { "headers": headers } )
