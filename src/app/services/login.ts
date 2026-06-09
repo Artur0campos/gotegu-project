@@ -10,25 +10,36 @@ export class Login {
   private usarioUrl = 'http://localhost:8080/api/v1/usuario';
 
 
-  constructor(private http:HttpClient){}
+  constructor(private http: HttpClient) { }
 
-  registration_user(obj:User): Observable <User>{
+  registration_user(obj: User): Observable<User> {
     return this.http.post<User>(`${this.usarioUrl}`, obj)
   }
 
-  authentication(obj:UserLogin): Observable <any> {
+  authentication(obj: UserLogin): Observable<any> {
     return this.http.post<UserLogin>(`${this.usarioUrl}/logar`, obj)
   }
-  
-  list_users(): Observable<any>{
+
+  list_users(): Observable<any> {
     const token = sessionStorage.getItem('token_jwt')
-    const headers = new HttpHeaders({ Authorization: `${token}`})
-    return this.http.get<any>(`${this.usarioUrl}`, { "headers": headers } )
+    const headers = new HttpHeaders({ Authorization: `${token}` })
+    return this.http.get<any>(`${this.usarioUrl}`, { "headers": headers })
   }
 
-  update_User(id: number, obj:User): Observable<any>{
+  update_User(id: number, obj: any): Observable<any> {
     const token = sessionStorage.getItem('token_jwt')
-    const headers = new HttpHeaders({ Authorization: `${token}`})
-    return this.http.put<any>( `${this.usarioUrl}/${id}`,obj, { "headers": headers } )
+    const headers = new HttpHeaders({ Authorization: `${token}` })
+    return this.http.put<any>(`${this.usarioUrl}/${id}`, obj, { "headers": headers })
   }
+
+  get_user_by_token(): Observable<any> {
+    const token = sessionStorage.getItem('token_jwt')
+    const headers = new HttpHeaders({ Authorization: `${token}` })
+    return this.http.get<any>(`${this.usarioUrl}/porToken`, { "headers": headers })
+  }
+
 }
+
+
+
+

@@ -1,4 +1,5 @@
 <div class="input-group">
     <label for="">{{text}}</label>
-    <input type="text" [placeholder]="placeholder" [value]="value" (input)="onInput($event)">
+    <input type="text" [placeholder]="placeholder" [disabled]="disabled" [(ngModel)]="innerValue"
+        (ngModelChange)="onModelChange($event)" (blur)="onTouched()">
 </div>

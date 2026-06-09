@@ -7,6 +7,7 @@ import { Inscricao } from '../../services/inscricao';
 import { ActivatedRoute, } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { inscricao_model } from '../../models/inscricao';
+import { Login } from '../../services/login';
 
 @Component({
   selector: 'app-event-resgistration',
@@ -27,7 +28,7 @@ export class EventResgistration {
   msgClass: string = ""
 
 
-  constructor(private eventos_service: eventosService, private inscricao_serivce: Inscricao, private route: ActivatedRoute, private cdr: ChangeDetectorRef) {
+  constructor(private eventos_service: eventosService, private inscricao_serivce: Inscricao, private route: ActivatedRoute, private cdr: ChangeDetectorRef, private loginService: Login) {
   }
 
   ngOnInit(): void {
@@ -53,25 +54,37 @@ export class EventResgistration {
   }
 
   inscrever() {
-    const inscricao = new inscricao_model(this.evento.id, Number(sessionStorage.getItem('id_usuario_participante')))
-    this.inscricao_serivce.post_inscricao(inscricao).subscribe({
+    this.loginService.get_user_by_token().subscribe({
       next: (response) => {
-        console.log(response)
-        this.msg = "Usuário cadastrado com sucesso!"
-        this.msgClass = 'success-message'
-      }, error: (err) => {
-        console.log(err)
-        const msg = err.error.msg
-        if (msg.includes('já está inscrito')) {
-          this.msg = 'Usuário já está inscrito !';
-          this.msgClass = 'error-message';
-        } else {
-          this.msg = 'Erro ao inscrever usuário';
-          this.msgClass = 'error-message';
-        }
+        const userId = response.id
+        const inscricao = new inscricao_model(this.evento.id, userId)
+        this.inscricao_serivce.post_inscricao(inscricao).subscribe({
+          next: (response) => {
+            console.log(response)
+            this.msg = "Usuário cadastrado com sucesso!"
+            this.msgClass = 'success-message'
+            this.cdr.detectChanges()
+          }, error: (err) => {
+            console.log(err)
+            const msg = err.error.msg
+            if (msg.includes('já está inscrito')) {
+              this.msg = 'Usuário já está inscrito !';
+              this.msgClass = 'error-message';
+              this.cdr.detectChanges()
+            } else {
+              this.msg = 'Erro ao inscrever usuário';
+              this.msgClass = 'error-message';
+              this.cdr.detectChanges()
+            }
 
+          }
+        })
+        
       }
+
     })
+
+
   }
 
 

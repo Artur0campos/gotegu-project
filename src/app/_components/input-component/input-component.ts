@@ -1,23 +1,12 @@
-import {
-  Component,
-  forwardRef,
-  Input
-} from '@angular/core';
-
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR
-} from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-component',
   standalone: true,
-
-  imports: [],
-
+  imports: [FormsModule], // Importante para usarmos o ngModel internamente
   templateUrl: './input-component.html',
   styleUrl: './input-component.css',
-
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -26,40 +15,41 @@ import {
     }
   ]
 })
-export class InputComponent
-  implements ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor {
+  @Input() text: string = 'label';
+  @Input() placeholder: string = '';
 
-  @Input() text: string = "label";
-  @Input() placeholder: string = "text";
+  // Atributos internos para gerenciar o valor e os estados
+  innerValue: string = '';
+  disabled: boolean = false;
 
-  value: string = '';
+  // Funções de retorno que o Angular injeta no componente
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
-  onChange = (value: string) => { };
-  onTouched = () => { };
-
-  writeValue(value: string): void {
-    this.value = value;
+  // Método chamado pelo Angular quando o formulário pai atualiza o valor do campo
+  writeValue(value: any): void {
+    this.innerValue = value || '';
   }
 
+  // Registra a função que avisa o formulário pai que o valor mudou
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
+  // Registra a função que avisa que o campo foi tocado (útil para validação de erro)
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void { }
-
-  onInput(event: Event): void {
-
-    const input = event.target as HTMLInputElement;
-
-    this.value = input.value;
-
-    this.onChange(this.value);
-
-    this.onTouched();
+  // Chamado pelo Angular se o formulário pai desabilitar o campo
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
+  // Método executado sempre que o usuário digita algo
+  onModelChange(newValue: string) {
+    this.innerValue = newValue;
+    this.onChange(newValue); // Avisa o pai sobre a mudança
+  }
 }

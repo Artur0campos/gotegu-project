@@ -1,10 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormField_ } from '../../_components/form-field/form-field';
 import { Header } from '../../_components/header/header';
 import { ContainerMain } from '../../_components/container-main/container-main';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { gerarHash, User } from '../../models/user';
 import { Login } from '../../services/login';
 
 @Component({
@@ -13,40 +12,47 @@ import { Login } from '../../services/login';
   templateUrl: './edit-base.html',
   styleUrl: './edit-base.css',
 })
-export class EditBase {
-  editForm: FormGroup
+export class EditBase implements OnInit {
+  editForm!: FormGroup
   msg: string = ""
   msgClass: string = ""
+  userNome: string = ""
+  userEmail: string = ""
+  userCpf: string = ""
+  id!: number
 
-  constructor(private ft: FormBuilder, private login_service: Login) {
-    this.editForm = this.ft.group({
+  constructor(private fb: FormBuilder, private login_service: Login, private cdr: ChangeDetectorRef,) {
+    this.editForm = this.fb.group({
       cpf: [''],
       nome: [''],
-      senha: [''],
-      email: [''],
+      email: ['']
     })
+
   }
 
 
   ngOnInit() {
-    console.log("edit base executado!")
+    this.login_service.get_user_by_token().subscribe({
+      next: (user_reponse) => {
+        console.log("user_reponse :", user_reponse)
+        this.userCpf = user_reponse.cpf
+        this.userEmail = user_reponse.email
+        this.userNome = user_reponse.nome
+        this.cdr.detectChanges()
+      }
+    })
+    this.cdr.detectChanges()
   }
 
   enviarEdit() {
-    const user: User = this.editForm.value
-    if (user.cpf != '1234') {
-      user.senha = gerarHash(user.senha)
-    }
-    this.login_service.update_User(Number(sessionStorage.getItem('id_usuario_participante')), user).subscribe({
+    this.login_service.get_user_by_token().subscribe({next: (reponse) => { this.id = reponse.id}})
+    const obj = this.editForm.value
+    this.login_service.update_User(this.id, obj).subscribe({
       next: (reponse) => {
         console.log(reponse)
-        this.msg = "Usuário editado com sucesso!"
-        this.msgClass = 'success-message'
       },
       error: (err) => {
         console.log(err)
-        this.msg = 'Erro ao editar usuário!';
-        this.msgClass = 'error-message';
       }
     })
 

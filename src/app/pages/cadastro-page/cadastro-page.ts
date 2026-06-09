@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { InputComponent } from '../../_components/input-component/input-component';
 import { PrimaryBtn } from '../../_components/primary-btn/primary-btn';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ export class CadastroPage {
   msg: string = ""
   msgClass: string = ""
 
-  constructor(private fb: FormBuilder, private loginService: Login, private route: Router) {
+  constructor(private fb: FormBuilder, private loginService: Login, private cdr: ChangeDetectorRef) {
 
     this.userForm = this.fb.group({
       cpf: [''],
@@ -39,12 +39,13 @@ export class CadastroPage {
         console.log(response)
         this.msg = "Usuário cadastrado com sucesso!"
         this.msgClass = 'success-message'
+        this.cdr.detectChanges()
       }, error: (err) => {
         console.log(err)
         this.msg =
           'Erro ao cadastrar usuário';
-
-        this.msgClass = 'error-message';
+          this.msgClass = 'error-message';
+          this.cdr.detectChanges()
 
       }
 
