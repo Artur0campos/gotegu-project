@@ -1,0 +1,86 @@
+.main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    
+    background: #fff;
+    
+    border: 2px solid #3B5AC2;
+    border-radius: 24px;
+    
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    
+    box-shadow: 0 4px 12px rgba(59, 90, 194, 0.08);
+    transition: all 0.3s ease;
+}
+
+.main-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 90, 194, 0.15);
+    background-color: #F8FAFC;
+}
+
+.element-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.element-span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #4A5568;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.element-row:first-of-type {
+    flex: 0 0 50px;
+}
+
+.element-row:first-of-type .element-span {
+    font-weight: 700;
+    color: #64748B;
+}
+
+.element-row:nth-of-type(5) .element-span {
+    font-weight: 600;
+    color: #3B5AC2;
+}
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.btn-row app-primary-btn {
+    margin-top: 0;
+    width: auto;
+}
+
+.admin-true {
+    color: #10B981 !important; 
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-false {
+    color: #94A3B8 !important; 
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.element-span i {
+    font-size: 18px;
+}

@@ -17,7 +17,16 @@ export class Header {
     this.router.navigateByUrl('/edit');
   }
 
-  home(){
+  home() {
     this.router.navigateByUrl('/homePage')
+  }
+
+  listOfUsers() {
+    this.router.navigateByUrl('/listOfUsers')
+  }
+
+  logout() {
+    sessionStorage.removeItem('token_jwt')
+    this.router.navigateByUrl('/login')
   }
 }
