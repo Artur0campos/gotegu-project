@@ -1,0 +1,201 @@
+:root{
+    --primary: #3555c7;
+    --secondary: #1d376f;
+    --dark: #0f172a;
+    --light: #f8fafc;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-container{
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+    width: 100%;
+    min-height: 320px;
+
+    background: linear-gradient(
+        90deg,
+        #0f172a 0%,
+        #111827 60%,
+        #1d376f 100%
+    );
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 40px;
+
+    padding: 40px 5%;
+}
+
+.info-event{
+    flex: 1;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-event h1{
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.info-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-item i{
+    color: #4f73ff;
+    font-size: 1.4rem;
+}
+
+.img-event{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.img-event img{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+
+    border-radius: 20px;
+
+    object-fit: cover;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* ========================= */
+/* CONTEÚDO */
+/* ========================= */
+
+.content{
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 40px;
+
+    align-items: start;
+
+    padding: 50px 5%;
+}
+
+.descricao{
+    width: 100%;
+    max-width: 900px;
+}
+
+.descricao h2{
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #111827;
+}
+
+.descricao p{
+    color: #64748b;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.inscricao-card{
+
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #dbe3ff;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+
+    justify-self: stretch;
+}
+
+.inscricao-card h3{
+    color: #1d376f;
+    margin-bottom: 10px;
+}
+
+.inscricao-card p{
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.inscricao-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(59, 90, 194, 0.25)
+}
+
+.success-message {
+
+    color: #1db954 !important;
+
+    font-weight: 600;
+
+    margin-top: 15px;
+
+    text-align: start;
+}
+
+.error-message {
+
+    color: #ff3b30 !important;
+
+    font-weight: 600;
+
+    margin-top: 15px;
+
+    text-align: start;
+}
+
+/* ========================= */
+/* RESPONSIVO */
+/* ========================= */
+
+@media (max-width: 1000px){
+
+    .hero{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content{
+        grid-template-columns: 1fr;
+    }
+
+    .inscricao-card{
+        width: 100%;
+    }
+
+    .info-item{
+        justify-content: center;
+    }
+}

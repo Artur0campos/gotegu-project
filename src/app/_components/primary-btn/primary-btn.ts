@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -12,4 +12,10 @@ export class PrimaryBtn {
   @Input() text: string = 'participar';
   @Input() variant: 'primary' | 'secondary' = 'primary';
   @Input() icon: string="ph ph-plus"
+
+  @Output() btnClick = new EventEmitter<void>();
+
+  onClick() {
+    this.btnClick.emit();
+  }
 }

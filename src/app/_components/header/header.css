@@ -60,3 +60,10 @@ img{
     cursor: pointer
 }
 
+.navegation i{
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: 8px;
+    color: #ED8936;
+}
+

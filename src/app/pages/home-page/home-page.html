@@ -4,7 +4,10 @@
     @if ( eventos_disponiveis.length == 0 ) {
     <h3>Nenhum evento disponível</h3>
     }@else {
-    <app-card-evento *ngFor="let evento of eventos_disponiveis" [nome]="evento.nome" [descricao]="evento.descricao"
-        [dt_inicio]="evento.dt_inicio"></app-card-evento>
+    @for (evento of eventos_disponiveis; track evento.id) {
+    <app-card-evento [nome]="evento.nome" [descricao]="evento.descricao" [dt_inicio]="evento.dt_inicio"
+        [evento]="evento"></app-card-evento>
     }
-</app-container-main>=
+
+    }
+</app-container-main>

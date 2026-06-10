@@ -1,0 +1,32 @@
+<div class="main-row">
+    <div class="element-row">
+        <span class="element-span"><b>{{idUser}}</b></span>
+    </div>
+    <div class="element-row">
+        <span class="element-span"><b>Nome:</b> {{nomeUser}}</span>
+    </div>
+    <div class="element-row">
+        <span class="element-span"><b>CPF: </b> {{cpfUser}}</span>
+    </div>
+    <div class="element-row">
+        <span class="element-span"> <b>email:</b> {{emailUser}}</span>
+    </div>
+    <div class="element-row">
+        @if ( isadmin === 1){
+        <span class="element-span admin-true">
+            <i class="ph ph-check-fat"></i> Admin
+        </span>
+        }
+        @else {
+        <span class="element-span admin-false">
+            <i class="ph ph-lock-simple"></i> Usuário
+        </span>
+        }
+
+    </div>
+    <div class="btn-row">
+        <app-primary-btn text="tornar adm" icon="ph ph-crown" (btnClick)="pclick()"></app-primary-btn>
+        <app-secondary-btn text="Deletar usuário" variant="secondary" (sbtnClick)="sclick()" ></app-secondary-btn>
+    </div>
+
+</div>

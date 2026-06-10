@@ -1,4 +1,4 @@
-<div id="card">
+<form [formGroup]="formGroup" id="card">
     <div id="title">
         <h2>{{ text_title }}</h2>
     </div>
@@ -6,9 +6,9 @@
         <ng-content></ng-content>
     </div>
     <div class="btn-div">
-        <app-primary-btn></app-primary-btn>
+        <app-primary-btn (btnClick)="onClick()" text={{text_btn}} icon={{icon}}></app-primary-btn>
         <app-primary-btn text="deletar" variant="secondary" *ngIf="showDeleteButton"
-            icon="ph ph-download-simple"></app-primary-btn>
+            icon="ph ph-trash"></app-primary-btn>
     </div>
 
-</div>
+</form>
