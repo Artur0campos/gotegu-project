@@ -13,7 +13,7 @@ export class ListItem {
   @Input() nomeUser!: string
   @Input() cpfUser!: string
   @Input() emailUser!: string
-  @Input() isadmin!: number
+  @Input() isadmin!: any
   @Output() sAction =  new EventEmitter<void>()
   @Output() pAction = new EventEmitter<void>()
 

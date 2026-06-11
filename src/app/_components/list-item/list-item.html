@@ -12,7 +12,7 @@
         <span class="element-span"> <b>email:</b> {{emailUser}}</span>
     </div>
     <div class="element-row">
-        @if ( isadmin === 1){
+        @if ( isadmin == 1 || isadmin === true){
         <span class="element-span admin-true">
             <i class="ph ph-check-fat"></i> Admin
         </span>
@@ -26,7 +26,7 @@
     </div>
     <div class="btn-row">
         <app-primary-btn text="tornar adm" icon="ph ph-crown" (btnClick)="pclick()"></app-primary-btn>
-        <app-secondary-btn text="Deletar usuário" variant="secondary" (sbtnClick)="sclick()" ></app-secondary-btn>
+        <app-secondary-btn text="Deletar usuário" variant="secondary" (sbtnClick)="sclick()"></app-secondary-btn>
     </div>
 
 </div>

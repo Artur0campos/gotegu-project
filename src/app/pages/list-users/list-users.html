@@ -7,6 +7,6 @@
     </div>
     @for (user_ of lista_users; track user_.cpf) {
     <app-list-item [idUser]="user_.id" [cpfUser]="user_.cpf" [emailUser]="user_.email" [nomeUser]="user_.nome"
-        [isadmin]="user_.adiministrador" (sAction)="delete_user(user_.id)" (pAction)="promo(user_.id)"></app-list-item>
+        [isadmin]="user_.administrador" (sAction)="delete_user(user_.id)" (pAction)="promo(user_.id)"></app-list-item>
     }
 </div>

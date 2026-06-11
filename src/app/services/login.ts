@@ -47,7 +47,8 @@ export class Login {
     promotion_user_by_id(id: number): Observable<any> {
     const token = sessionStorage.getItem('token_jwt')
     const headers = new HttpHeaders({ Authorization: `${token}` })
-    return this.http.post<any>(`${this.usarioUrl}/promover/${id}`, { "headers": headers })
+    console.log(token)
+    return this.http.post<any>(`${this.usarioUrl}/promover/${id}`,{}, { "headers": headers })
   }
 }
 
