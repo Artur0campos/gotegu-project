@@ -1,0 +1,19 @@
+<app-header></app-header>
+<app-container-main>
+    <div class="form-field-container">
+        <h2 class="form-title">Criar novo Usuário</h2>
+        <form [formGroup]="userForm" (ngSubmit)="criarUser()" id="card-inscricao">
+            <app-input-component text="cpf" placeholder="ex: 000000000" formControlName="cpf"></app-input-component>
+            <app-input-component text="nome" placeholder="ex: Artur" formControlName="nome"></app-input-component>
+            <app-input-component text="email" placeholder="example@gmail.com"
+                formControlName="email"></app-input-component>
+            <app-input-component text="senha" placeholder="....." formControlName="senha"></app-input-component>
+            @if (msg) {
+            <p [class]="msgClass">{{ msg }}</p>
+            }
+            <div class="form-actions">
+                <app-primary-btn class="btn" type="submit" icon="ph ph-floppy-disk" text="salvar"></app-primary-btn>
+            </div>
+        </form>
+    </div>
+</app-container-main>
