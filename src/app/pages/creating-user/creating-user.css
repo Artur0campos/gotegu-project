@@ -1,0 +1,53 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-field-container {
+    background: #ffffff;
+    border: 2px solid #3B5AC2;
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 600px;
+    width: 100%;
+    margin: 40px auto;
+    box-shadow: 0 12px 32px rgba(59, 90, 194, 0.1);
+    box-sizing: border-box;
+}
+
+.form-title {
+    margin: 0 0 24px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1F2937;
+    text-align: center;
+}
+
+#card-inscricao {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.success-message {
+    color: #10B981;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 4px 0;
+    text-align: center;
+}
+
+.error-message {
+    color: #EF4444;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 4px 0;
+    text-align: center;
+}
