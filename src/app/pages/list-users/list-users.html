@@ -3,7 +3,7 @@
     <h3 id="titulo">Lista de usuários</h3>
     <div class="add-user-container">
         <h4>Adicionar usuário</h4>
-        <app-add-button></app-add-button>
+        <app-add-button (addClick)="nav()"></app-add-button>
     </div>
     @for (user_ of lista_users; track user_.cpf) {
     <app-list-item [idUser]="user_.id" [cpfUser]="user_.cpf" [emailUser]="user_.email" [nomeUser]="user_.nome"

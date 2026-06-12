@@ -6,6 +6,7 @@ import { CadastroPage } from './pages/cadastro-page/cadastro-page';
 import { authGuard } from './guard/auth-guard';
 import { EventResgistration } from './pages/event-resgistration/event-resgistration';
 import { ListUsers } from './pages/list-users/list-users';
+import { CreatingUser } from './pages/creating-user/creating-user';
 
 export const routes: Routes = [
 
@@ -46,5 +47,10 @@ path: 'login',
 {
     path: 'listOfUsers',
     component: ListUsers
+},
+
+{
+    path: 'newUser',
+    component: CreatingUser
 }
 ];

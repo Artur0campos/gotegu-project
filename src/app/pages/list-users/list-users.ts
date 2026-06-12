@@ -4,6 +4,7 @@ import { ListItem } from "../../_components/list-item/list-item";
 import { Login } from '../../services/login';
 import { AddButton } from "../../_components/add-button/add-button";
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -16,7 +17,7 @@ export class ListUsers implements OnInit {
 
   lista_users: Array<any> = [];
 
-  constructor(private user_services: Login, private cdr: ChangeDetectorRef) { }
+  constructor(private user_services: Login, private cdr: ChangeDetectorRef, private route: Router) { }
 
   ngOnInit() {
     this.carregarUsuarios();
@@ -120,5 +121,10 @@ export class ListUsers implements OnInit {
         });
       }
     });
+  }
+
+  nav(){
+    console.log("acionado")
+    this.route.navigateByUrl('/newUser')
   }
 }
