@@ -41,10 +41,10 @@ export class eventosService {
     return this.http.delete<any>(`${this.eventosUrl}/${id}`, { "headers": headers })
   }
 
-    update_event_by_id(id: number): Observable<any> {
+    update_event_by_id(id: number, eventoAtualizado: Eventos): Observable<any> {
     const token = sessionStorage.getItem('token_jwt')
     const headers = new HttpHeaders({ Authorization: `${token}` })
-    return this.http.delete<any>(`${this.eventosUrl}/${id}`, { "headers": headers })
+    return this.http.put<any>(`${this.eventosUrl}/${id}`, eventoAtualizado, { "headers": headers })
   }
 
 }
