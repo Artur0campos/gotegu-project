@@ -127,4 +127,9 @@ export class ListUsers implements OnInit {
     console.log("acionado")
     this.route.navigateByUrl('/newUser')
   }
+
+  edit(id: number){
+    console.log("id: ",id)
+    this.route.navigateByUrl("/login")
+  }
 }
