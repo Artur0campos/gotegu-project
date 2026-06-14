@@ -1,0 +1,89 @@
+<app-header></app-header>
+
+<div class="container-main">
+    <h3 id="titulo">Lista de Eventos</h3>
+
+    <div class="add-user-container">
+        <h4>Criar Evento</h4>
+        <app-add-button (addClick)="alternarFormulario()"></app-add-button>
+    </div>
+
+    <div class="events-section">
+        <app-container-main>
+            @for(evento of list_of_events; track evento.id ){
+            <app-card-evento [nome]="evento.nome" [descricao]="evento.descricao" [dt_inicio]="evento.dt_inicio"
+                [evento]="evento" textbtn="editar" iconBtn="ph ph-pencil">
+            </app-card-evento>
+            }
+        </app-container-main>
+    </div>
+</div>
+
+@if (exibirFormulario) {
+<div class="modal-overlay" (click)="alternarFormulario()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+
+        <button class="btn-close-modal" (click)="alternarFormulario()">
+            <i class="ph ph-x"></i>
+        </button>
+
+        <h3 class="modal-title">Cadastrar Novo Evento</h3>
+
+        <form [formGroup]="eventoForm" (ngSubmit)="criarEvento()" class="modal-form">
+            <div class="input-field">
+                <label>Nome do Evento</label>
+                <input type="text" formControlName="nome" placeholder="Ex: Workshop de Angular">
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>Data de Início</label>
+                    <input type="date" formControlName="dt_inicio">
+                </div>
+                <div class="input-field">
+                    <label>Data de Fim</label>
+                    <input type="date" formControlName="dt_fim">
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label>Descrição</label>
+                <textarea formControlName="descricao" placeholder="Detalhes sobre o evento..." rows="3"></textarea>
+            </div>
+
+            <div class="input-field">
+                <label>Nome do Responsável</label>
+                <input type="text" formControlName="nome_responsavel" placeholder="Ex: Dr. Diego Bruno">
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>CPF do Responsável</label>
+                    <input type="text" formControlName="cpf_responsavel" placeholder="000.000.000-00">
+                </div>
+                <div class="input-field">
+                    <label>E-mail do Responsável</label>
+                    <input type="email" formControlName="email_responsavel" placeholder="exemplo@gmail.com">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>Número de Vagas</label>
+                    <input type="number" formControlName="numero_vagas" placeholder="Ex: 50">
+                </div>
+                <div class="input-field">
+                    <label>Limite de Inscrição</label>
+                    <input type="date" formControlName="dt_limite_inscricao">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-secundario" (click)="alternarFormulario()">Cancelar</button>
+                <button type="submit" class="btn-primario">Salvar Evento</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+}

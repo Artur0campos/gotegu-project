@@ -15,7 +15,8 @@ export class CardEvento {
   @Input() descricao!: string
   @Input() dt_inicio!: string
   @Input() evento!: Eventos
-  
+  @Input() textbtn: string = "saiba mais"
+  @Input() iconBtn: string = "ph ph-caret-right"
 
   constructor(private route:Router,){}
 

@@ -130,6 +130,6 @@ export class ListUsers implements OnInit {
 
   edit(id: number){
     console.log("id: ",id)
-    this.route.navigateByUrl("/login")
+    this.route.navigate(['/edit', id])
   }
 }
