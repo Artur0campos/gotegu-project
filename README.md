@@ -2,6 +2,9 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
 
+## Um pouco sobre como foi fazer esse projeto:
+Muito provavelmente não é do seu interesse ler como foi para min fazer, mas de fato escrevo isso para min mesmo. Acho que até o momento na faculdade esse proejto foi o mais desafiador, fiz só e com algo que nunca tinha mexido, gastei muito( muito mesmo) fazendo e ainda assim não entreguei 100%, mas gostei muito do desafio e de mexer nesse framework, pretendo continuar estudando e mexendo no Angular depois que passar esse semestre. Agradeço muito a paciencia e ensino do professor dessa materia Thiago Mariano.
+
 ## Development server
 
 To start a local development server, run:
