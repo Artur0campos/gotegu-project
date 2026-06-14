@@ -1,55 +1,124 @@
 <app-header></app-header>
-<section class="hero">
-    <div class="info-event">
 
-        <h1>{{eventoNome}}</h1>
-        <div class="info-item">
-            <i class="ph ph-calendar"></i>
-            <span>{{eventoDt_init}}</span>
+<div class="page-container">
+    <section class="hero">
+        <div class="info-event">
+            <h1>{{eventoNome}}</h1>
+            <div class="info-item">
+                <i class="ph ph-calendar"></i>
+                <span>{{eventoDt_init}}</span>
+            </div>
+            <div class="info-item">
+                <i class="ph ph-alarm"></i>
+                <span>Limite de inscrição: {{eventoLimite}}</span>
+            </div>
+            <div class="info-item">
+                <i class="ph ph-users"></i>
+                <span>{{eventoVagas}} vagas</span>
+            </div>
+            <div class="info-item">
+                <i class="ph ph-envelope"></i>
+                <span>{{eventoEmail}}</span>
+            </div>
+        </div>
+        <div class="img-event">
+            <img src="/card-promo/trem.jpg" alt="evento">
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="descricao">
+            <h2>Descrição do evento</h2>
+            <p>{{eventoDescricao}}</p>
         </div>
 
-        <div class="info-item">
-            <i class="ph ph-alarm"></i>
-            <span>Limite de inscrição: {{eventoLimite}}</span>
+        <div class="side-column">
+            <div class="inscricao-card">
+                <h3>Participar</h3>
+                <p>Garanta sua vaga neste evento.</p>
+                <app-primary-btn icon="ph ph-arrow-up" text="Inscrever-se" (btnClick)="inscrever()"></app-primary-btn>
+                <p [class]="msgClass">{{ msg }}</p>
+            </div>
+
+            <div class="admin-actions">
+                <app-primary-btn icon="ph ph-pencil" text="Editar Evento"
+                    (btnClick)="alternarFormulario()"></app-primary-btn>
+                <div class="delete-action-wrapper">
+                    <app-secondary-btn text="Excluir Evento" icon="ph ph-trash"
+                        (sbtnClick)="deletarEvento()"></app-secondary-btn>
+                </div>
+            </div>
         </div>
+    </section>
+</div>
 
-        <div class="info-item">
-            <i class="ph ph-users"></i>
-            <span>{{eventoVagas}} vagas</span>
-        </div>
 
-        <div class="info-item">
-            <i class="ph ph-envelope"></i>
-            <span>{{eventoEmail}}</span>
-        </div>
+@if (exibirFormulario) {
+<div class="modal-overlay" (click)="alternarFormulario()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
 
+        <button class="btn-close-modal" (click)="alternarFormulario()">
+            <i class="ph ph-x"></i>
+        </button>
+
+        <h3 class="modal-title">Editar Detalhes do Evento</h3>
+
+        <form [formGroup]="editEventoForm" (ngSubmit)="enviarEdit()" class="modal-form">
+            <div class="input-field">
+                <label>Nome do Evento</label>
+                <input type="text" formControlName="nome" placeholder="Nome do evento">
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>Data de Início</label>
+                    <input type="date" formControlName="dt_inicio">
+                </div>
+                <div class="input-field">
+                    <label>Data de Fim</label>
+                    <input type="date" formControlName="dt_fim">
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label>Descrição</label>
+                <textarea formControlName="descricao" rows="3" placeholder="Descrição do evento"></textarea>
+            </div>
+
+            <div class="input-field">
+                <label>Nome do Responsável</label>
+                <input type="text" formControlName="nome_responsavel">
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>CPF do Responsável</label>
+                    <input type="text" formControlName="cpf_responsavel">
+                </div>
+                <div class="input-field">
+                    <label>E-mail do Responsável</label>
+                    <input type="email" formControlName="email_responsavel">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label>Número de Vagas</label>
+                    <input type="number" formControlName="numero_vagas">
+                </div>
+                <div class="input-field">
+                    <label>Limite de Inscrição</label>
+                    <input type="date" formControlName="dt_limite_inscricao">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-secundario" (click)="alternarFormulario()">Cancelar</button>
+                <button type="submit" class="btn-primario">Salvar Alterações</button>
+            </div>
+
+            <p [class]="msgModalClass" style="margin-top: 10px; text-align: center;">{{ msgModal }}</p>
+        </form>
     </div>
-
-    <div class="img-event">
-        <img src="/card-promo/trem.jpg" alt="evento">
-    </div>
-
-</section>
-
-<section class="content">
-
-    <div class="descricao">
-
-        <h2>Descrição do evento</h2>
-        <p>
-            {{eventoDescricao}}
-        </p>
-    </div>
-
-    <div class="inscricao-card">
-        <h3>Participar</h3>
-        <p>
-            Garanta sua vaga neste evento.
-        </p>
-        <app-primary-btn icon="ph ph-arrow-up" text="Inscrever-se" (btnClick)="inscrever()"></app-primary-btn>
-        <p [class]="msgClass">
-            {{ msg }}
-        </p>
-    </div>
-
-</section>
+</div>
+}
