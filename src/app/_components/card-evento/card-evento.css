@@ -55,15 +55,19 @@
     line-height: 1.1;
 }
 
+
 .card-text p {
     margin: 0;
-
     color: #64748B;
-
     font-size: 14px;
-
     line-height: 1.4;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
+
 
 .card-text p:first-of-type {
     min-height: 40px;

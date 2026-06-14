@@ -7,6 +7,7 @@ import { authGuard } from './guard/auth-guard';
 import { EventResgistration } from './pages/event-resgistration/event-resgistration';
 import { ListUsers } from './pages/list-users/list-users';
 import { CreatingUser } from './pages/creating-user/creating-user';
+import { EventosEditPage } from './pages/eventos-edit-page/eventos-edit-page';
 
 export const routes: Routes = [
 
@@ -34,6 +35,10 @@ export const routes: Routes = [
     
 
 },
+{
+    path: 'edit/:id',
+    component: EditBase
+},
 
 {
 path: 'login',
@@ -52,5 +57,10 @@ path: 'login',
 {
     path: 'newUser',
     component: CreatingUser
+},
+
+{
+    path: 'editEventos',
+    component: EventosEditPage
 }
 ];

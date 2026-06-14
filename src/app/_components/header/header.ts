@@ -29,4 +29,8 @@ export class Header {
     sessionStorage.removeItem('token_jwt')
     this.router.navigateByUrl('/login')
   }
+
+  eventos(){
+    this.router.navigateByUrl("/editEventos")
+  }
 }
